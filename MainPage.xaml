@@ -1,0 +1,240 @@
+﻿<ContentPage
+    x:Class="Projekatv2.MainPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:vm="clr-namespace:Projekatv2.ViewModel"
+    BackgroundColor="#F8F8F8">
+
+    <!-- Resources -->
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <vm:CategoryToColorConverter x:Key="CategoryToColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <!-- BindingContext -->
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="15" Padding="15">
+
+            <!-- HEADER: Hamburger | Logo + Naziv | Pretraga -->
+            <Grid Padding="5" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start" HorizontalOptions="Fill">
+
+                <!-- Hamburger ikona -->
+                <ImageButton Source="hamburger.png"
+                             WidthRequest="30"
+                             HeightRequest="30"
+                             Scale="0.5"
+                             BackgroundColor="Transparent"
+                             Clicked="ImageButton_Clicked"
+                             Grid.Column="0"
+                             HorizontalOptions="Start"
+                             VerticalOptions="Center"/>
+
+                <!-- Logo i naziv -->
+                <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                    <Image Source="logo.png" HeightRequest="60" WidthRequest="60"/>
+                    <Label Text="Slatki zalogaj"
+                           FontSize="24"
+                           FontFamily="GreatVibes"
+                           FontAttributes="Bold"
+                           TextColor="#F4B400"
+                           VerticalOptions="Center"
+                           />
+                </HorizontalStackLayout>
+
+                <!-- Pretraga / lupa -->
+                <ImageButton Source="search.png"
+                             WidthRequest="40"
+                             HeightRequest="40"
+                             BackgroundColor="Transparent"
+                             Clicked="OnSearch_Clicked_1"
+                             Grid.Column="2"
+                             HorizontalOptions="End"
+                             VerticalOptions="Center" Scale="0.5"/>
+            </Grid>
+
+            <!-- SLIDER -->
+            <Frame CornerRadius="20" BackgroundColor="White" HasShadow="True" Padding="0">
+                <CarouselView ItemsSource="{Binding FeaturedImages}" HeightRequest="180" Loop="True">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding .}" Aspect="AspectFill"/>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </Frame>
+
+            <!-- NAJPRODAVANIJI PROIZVODI -->
+            <Label Text="Najprodavaniji proizvodi"
+       FontSize="20"
+       FontAttributes="Bold"
+       TextColor="#1E3A8A"
+                   FontFamily="Poppins"
+       Margin="10,5,0,0"/>
+
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout Spacing="15" Padding="5">
+
+                    <CollectionView ItemsSource="{Binding FavoriteProducts}"
+                        ItemsLayout="HorizontalList"
+                        HorizontalScrollBarVisibility="Never"
+                        HeightRequest="220"
+                        BackgroundColor="Transparent">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                
+                                <!-- Moderni frame sa shadow i gradientom -->
+                                <Frame Padding="0"
+                           CornerRadius="25"
+                           Margin="5"
+                           HasShadow="True"
+                           HeightRequest="210"
+                           WidthRequest="140"
+                           IsClippedToBounds="True"
+                           BackgroundColor="Transparent"
+                           BorderColor="#D1D5DB"  
+                                    
+                           >
+                                    <Grid>
+                                        <!-- Gradient pozadina -->
+                                        <Grid.Background>
+                                            <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                                <GradientStop Color="#4B6CB7" Offset="0.0"/>
+                                                <!-- plava nijansa -->
+                                                <GradientStop Color="#182848" Offset="1.0"/>
+                                                <!-- tamnija plava -->
+                                            </LinearGradientBrush>
+                                        </Grid.Background>
+
+                                        <VerticalStackLayout Spacing="8" Padding="8" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <!-- Slika -->
+                                            <Frame CornerRadius="15" HasShadow="True" Padding="0" HeightRequest="100" WidthRequest="120" IsClippedToBounds="True">
+                                                <Image Source="{Binding Image}" Aspect="AspectFill"/>
+                                            </Frame>
+
+                                            <!-- Naziv -->
+                                            <Label Text="{Binding Name}" FontAttributes="Bold" FontSize="14" HorizontalOptions="Center" TextColor="White" LineBreakMode="TailTruncation"/>
+
+                                            <!-- Cijena -->
+                                            <Label Text="{Binding Price, StringFormat='{}{0} KM'}" FontSize="12" HorizontalOptions="Center" TextColor="white"/>
+
+                                            <!-- Dugme Naruči -->
+                                            <Button Text="Naruči"
+                                        FontSize="12"
+                                        WidthRequest="80"
+                                        HeightRequest="30"
+                                        CornerRadius="15"
+                                        BackgroundColor="white"
+                                        TextColor="#1E3A8A"
+                                        HorizontalOptions="Center"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type CollectionView}}, Path=BindingContext.AddToCartCommand}"
+                                        CommandParameter="{Binding .}"  />
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </HorizontalStackLayout>
+            </ScrollView>
+
+
+            <!-- KATEGORIJE -->
+            <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                <HorizontalStackLayout Spacing="10" Padding="0,10">
+                    <Button Text="Palacinci"
+                            CornerRadius="15"
+                            BorderColor="#F4B400"
+                            BorderWidth="2"
+                            TextColor="Black"
+                            BackgroundColor="{Binding SelectedCategory, Converter={StaticResource CategoryToColorConverter}, ConverterParameter=Palacinci}"
+                            Command="{Binding SelectCategoryCommand}" 
+                            CommandParameter="Palacinci"/>
+                    <Button Text="Holandski palacinci"
+                            CornerRadius="15"
+                            BorderColor="#F4B400"
+                            BorderWidth="2"
+                            TextColor="Black"
+                            BackgroundColor="{Binding SelectedCategory, Converter={StaticResource CategoryToColorConverter}, ConverterParameter=Holandski}"
+                            Command="{Binding SelectCategoryCommand}" 
+                            CommandParameter="Holandski"/>
+                    <Button Text="Pića"
+                            CornerRadius="15"
+                            BorderColor="#F4B400"
+                            BorderWidth="2"
+                            TextColor="Black"
+                            BackgroundColor="{Binding SelectedCategory, Converter={StaticResource CategoryToColorConverter}, ConverterParameter=Pića}"
+                            Command="{Binding SelectCategoryCommand}" 
+                            CommandParameter="Pića"/>
+                    <Button Text="Wafl"
+                            CornerRadius="15"
+                            BorderColor="#F4B400"
+                            BorderWidth="2"
+                            TextColor="Black"
+                            BackgroundColor="{Binding SelectedCategory, Converter={StaticResource CategoryToColorConverter}, ConverterParameter=Wafl}"
+                            Command="{Binding SelectCategoryCommand}" 
+                            CommandParameter="Wafl"/>
+                </HorizontalStackLayout>
+            </ScrollView>
+
+            <!-- LISTA PROIZVODA -->
+            <CollectionView ItemsSource="{Binding FilteredProducts}" SelectionMode="Single" SelectionChanged="OnProductSelected">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame CornerRadius="15" Padding="10" Margin="10,5" BackgroundColor="White" HasShadow="True">
+                            <Grid ColumnDefinitions="90,*,100" RowDefinitions="Auto,Auto,Auto">
+
+                                <!-- Slika sa corner radius i gradient pozadina -->
+                                <Frame CornerRadius="15" HasShadow="False" Padding="0" HeightRequest="90" WidthRequest="90" IsClippedToBounds="True" Grid.RowSpan="3" Grid.Column="0">
+                                    <Frame.Background>
+                                        <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                            <GradientStop Color="#FFF8E1" Offset="0.0"/>
+                                            <!-- svijetli bež -->
+                                            <GradientStop Color="#F5E0C3" Offset="1.0"/>
+                                            <!-- malo jači bež -->
+                                        </LinearGradientBrush>
+                                    </Frame.Background>
+                                    <Image Source="{Binding Image}" Aspect="AspectFill" />
+                                </Frame>
+
+                                <!-- Naziv -->
+                                <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" Margin="7" TextColor="#5C4033"/>
+
+                                <!-- Opis -->
+                                <Label Text="{Binding Description}" FontSize="13" TextColor="Gray" Grid.Row="1" Grid.Column="1" LineBreakMode="TailTruncation" Margin="7"/>
+
+                                <!-- Cijena -->
+                                <Label Text="{Binding Price, StringFormat='{}{0} KM'}" FontAttributes="Bold" TextColor="#F4B400" FontSize="14" Grid.Row="2" Grid.Column="1" Margin="7"/>
+
+                                <!-- Dugme Naruci -->
+                                <Button Text="Naruci" BackgroundColor="#F4B400" TextColor="#5C4033" CornerRadius="17" Grid.RowSpan="3" Grid.Column="2"
+                            VerticalOptions="End"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type CollectionView}}, Path=BindingContext.AddToCartCommand}"
+                            CommandParameter="{Binding .}"/>
+
+                                <!-- Heart button -->
+                                <ImageButton Source="heart.png"
+                                 Scale="0.5"
+                                 WidthRequest="30"
+                                 HeightRequest="30"
+                                 Grid.Row="0"
+                                 Grid.Column="2"
+                                 HorizontalOptions="End"
+                                 VerticalOptions="Start"
+                                 BackgroundColor="Transparent"
+                                 Clicked="OnHeartClicked"/>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

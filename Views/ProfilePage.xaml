@@ -1,0 +1,45 @@
+<ContentPage
+    x:Class="Projekatv2.ProfilePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Profil"
+    BackgroundColor="#FFF7E6">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20" HorizontalOptions="Center">
+
+            <!-- Avatar korisnika -->
+            <Frame CornerRadius="60" Padding="0" HasShadow="True" WidthRequest="120" HeightRequest="120">
+                <Image Source="user.png" Aspect="AspectFill" />
+            </Frame>
+
+            <!-- Ime korisnika -->
+            <Label Text="Ime Prezime"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="#333"
+                   HorizontalOptions="Center"/>
+
+            <!-- Email -->
+            <Label Text="email@primjer.com"
+                   FontSize="18"
+                   TextColor="#666"
+                   HorizontalOptions="Center"/>
+
+            <!-- Opcije -->
+            <VerticalStackLayout Spacing="15" Margin="0,30,0,0">
+                <Button Text="Uredi profil"
+                        BackgroundColor="#F4B400"
+                        TextColor="White"
+                        CornerRadius="15"
+                        HeightRequest="50"/>
+                <Button Text="Odjavi se"
+                        BackgroundColor="#FF5A5F"
+                        TextColor="White"
+                        CornerRadius="15"
+                        HeightRequest="50"/>
+            </VerticalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

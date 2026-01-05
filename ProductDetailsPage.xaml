@@ -1,0 +1,29 @@
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Projekatv2.Views.ProductDetailsPage">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Image Source="{Binding Image}"
+               HeightRequest="220"
+               Aspect="AspectFill"/>
+
+        <Label Text="{Binding Name}"
+               FontSize="22"
+               FontAttributes="Bold"/>
+
+        <Label Text="{Binding Description}"
+               TextColor="Gray"/>
+
+        <Label Text="{Binding Price, StringFormat='{}{0} KM'}"
+               FontSize="18"
+               TextColor="#F4B400"
+               FontAttributes="Bold"/>
+
+        <Button Text="Dodaj u korpu"
+                BackgroundColor="#F4B400"
+                TextColor="White"
+                CornerRadius="15"/>
+    </VerticalStackLayout>
+</ContentPage>
