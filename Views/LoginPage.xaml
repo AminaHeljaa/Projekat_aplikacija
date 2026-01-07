@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Projekatv2.Views.LoginPage"
+             Title="LoginPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundImageSource="glavna.jpg">
+
+    <StackLayout>
+        <Image Source="ogol.png" 
+               WidthRequest="230" 
+               Margin="0,30" />
+        <Label Margin="0,-20" 
+               Text="Welcome!" 
+               FontSize="35" 
+               HorizontalOptions="Center" 
+               FontAttributes="Bold" 
+               TextColor="#211B15"/>
+        <Label Margin="0,20" 
+               Text="Log in to continue" 
+               HorizontalOptions="Center" 
+               FontSize="15"/>
+
+        <Frame Margin="30,10"  Padding="10,3" CornerRadius="20" BackgroundColor="#FDF8F3" BorderColor="#E5D5C5" >
+            <Entry x:Name="EntryMail" Placeholder=" Enter Your Email" HorizontalOptions="FillAndExpand"  FontSize="15" PlaceholderColor="#A3A3A3" FontAttributes="Bold"/>
+        </Frame>
+
+        <Frame Margin="30,0" Padding="10,3" CornerRadius="20" BackgroundColor="#FDF8F3" BorderColor="#E5D5C5" >
+            <Entry x:Name="EntryPass" Placeholder="Enter Your Password" HorizontalOptions="FillAndExpand"  FontSize="15" PlaceholderColor="#A3A3A3" FontAttributes="Bold"/>
+        </Frame>
+
+        <Button Text="LOG IN" 
+                Margin="30,30" 
+                Clicked="LoginButton_Clicked" 
+                CornerRadius="25" Padding="10" 
+                FontSize="18" 
+                BackgroundColor="#F6AD2F">
+            <Button.Shadow>
+                <Shadow Offset="0,4" Radius="8" Opacity="0.35" />
+            </Button.Shadow>
+        </Button>
+
+        <StackLayout Margin="0,-15" Orientation="Horizontal" HorizontalOptions="Center" >
+            <Label Text="Dont have an account?"/>
+            <Label Text=" Sign up here!" TextColor="#A15A2B"/>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

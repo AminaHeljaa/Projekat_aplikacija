@@ -23,8 +23,8 @@
                             <Label Text="{Binding Price, StringFormat='{}{0} KM'}" FontAttributes="Bold" TextColor="#F4B400"/>
                         </VerticalStackLayout>
                         <Button Text="Ukloni" Grid.Column="2" BackgroundColor="#F4B400" TextColor="White" CornerRadius="15"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomeViewModel}}, Path=ToggleFavoriteCommand}"
-                                CommandParameter="{Binding .}"/>
+                             Command="{Binding Source={RelativeSource AncestorType={x:Type vm:HomeViewModel}}, Path=ToggleFavoriteCommand}"
+                             CommandParameter="{Binding .}"/>
                     </Grid>
                 </Frame>
             </DataTemplate>

@@ -26,10 +26,14 @@
             <ShellContent ContentTemplate="{DataTemplate views:CartPage}" />
         </Tab>
 
-        <!-- Favourites -->
+        <Tab Title="Lokacija" Icon="lok.png">
+            <ShellContent ContentTemplate="{DataTemplate views:LocationPage}" />
+        </Tab>
+
+        <!-- Favourites 
         <Tab Title="Favourites" Icon="heart.png">
             <ShellContent ContentTemplate="{DataTemplate views:FavouritesPage}" />
-        </Tab>
+        </Tab>-->
 
         <!-- Profile -->
         <Tab Title="Profile" Icon="user.png">

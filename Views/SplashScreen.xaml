@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Projekatv2.Views.SplashScreen"
+             Title="SplashScreen"
+             BackgroundImageSource="mob.png"
+              Shell.NavBarIsVisible="False"
+             NavigationPage.HasNavigationBar="False"
+             >
+
+    <StackLayout>
+        <StackLayout Padding="0" 
+                     VerticalOptions="Start">
+            <Image Source="ogol.png" 
+                   HeightRequest="500" 
+                   WidthRequest="288" 
+                   Margin="0,-80" />
+        </StackLayout>
+        
+        <Button VerticalOptions="EndAndExpand" 
+                Margin="80,0,80,80" 
+                Padding="13" 
+                CornerRadius="30" 
+                Text="GET STARTED" 
+                FontAttributes="Bold"
+                FontSize="20" 
+                BackgroundColor="#F6AD2F" 
+                CharacterSpacing="1" 
+                Clicked="StartedButton_Clicked">
+            <Button.Shadow>
+                <Shadow Offset="0,4" Radius="8" Opacity="0.35" />
+            </Button.Shadow>
+        </Button>
+    </StackLayout>
+
+</ContentPage>

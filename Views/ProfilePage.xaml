@@ -2,44 +2,97 @@
     x:Class="Projekatv2.ProfilePage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    Title="Profil"
-    BackgroundColor="#FFF7E6">
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
+    <StackLayout>
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="20" HorizontalOptions="Center">
+        <!-- HEADER: Hamburger | Logo + Naziv | Pretraga -->
+        <Grid Margin="0,7" Padding="5" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start" HorizontalOptions="Fill">
 
-            <!-- Avatar korisnika -->
-            <Frame CornerRadius="60" Padding="0" HasShadow="True" WidthRequest="120" HeightRequest="120">
-                <Image Source="user.png" Aspect="AspectFill" />
-            </Frame>
+            <!-- Hamburger ikona -->
+            <ImageButton Source="hamburger.png"
+                WidthRequest="30"
+                HeightRequest="30"
+                Scale="0.5"
+                BackgroundColor="Transparent"
+                Grid.Column="0"
+                HorizontalOptions="Start"
+                VerticalOptions="Center"/>
 
-            <!-- Ime korisnika -->
-            <Label Text="Ime Prezime"
-                   FontSize="24"
-                   FontAttributes="Bold"
-                   TextColor="#333"
-                   HorizontalOptions="Center"/>
+            <!-- Logo i naziv -->
+            <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
+                <Image Source="logo.png" HeightRequest="60" WidthRequest="60"/>
+                <Label Text="Slatki zalogaj"
+              FontSize="24"
+              FontFamily="GreatVibes"
+              FontAttributes="Bold"
+              TextColor="#F4B400"
+              VerticalOptions="Center"
+              />
+            </HorizontalStackLayout>
 
-            <!-- Email -->
-            <Label Text="email@primjer.com"
-                   FontSize="18"
-                   TextColor="#666"
-                   HorizontalOptions="Center"/>
+            <!-- Pretraga / lupa -->
+            <ImageButton Source="search.png"
+                WidthRequest="40"
+                HeightRequest="40"
+                BackgroundColor="Transparent"
+                Grid.Column="2"
+                HorizontalOptions="End"
+                VerticalOptions="Center" Scale="0.5"/>
+        </Grid>
 
-            <!-- Opcije -->
-            <VerticalStackLayout Spacing="15" Margin="0,30,0,0">
-                <Button Text="Uredi profil"
-                        BackgroundColor="#F4B400"
-                        TextColor="White"
-                        CornerRadius="15"
-                        HeightRequest="50"/>
-                <Button Text="Odjavi se"
-                        BackgroundColor="#FF5A5F"
-                        TextColor="White"
-                        CornerRadius="15"
-                        HeightRequest="50"/>
-            </VerticalStackLayout>
+        <Frame Padding="0" HeightRequest="120" WidthRequest="120" CornerRadius="3000" Margin="0,12">
+            <Image  x:Name="profileImage" Source="profile.jpg" Aspect="AspectFill"/>
+        </Frame>
+        <Label x:Name="nameLabel" Text="Hana Karzic" HorizontalOptions="Center" FontSize="20" FontAttributes="Bold" FontFamily="Poppins"
+               TextColor="#1E3A8A"/>
+        <Label x:Name="emailLabel" Text="hanakarzic@size.ba" HorizontalOptions="Center" FontFamily="Poppins" Margin="0,-5"/>
 
-        </VerticalStackLayout>
-    </ScrollView>
+        <Frame Margin="20,23,20,0" Padding="0" HasShadow="True" BorderColor="LightGrey" CornerRadius="10">
+            <StackLayout Orientation="Horizontal">
+                <Image Source="editprofile.png" HeightRequest="30" Margin="10"/>
+                <Label Text="Uredi Profil" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center"/>
+                <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
+                       Margin="0,3,10,0"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame Margin="20,10" Padding="2" HasShadow="True" BorderColor="LightGrey" CornerRadius="10">
+            <StackLayout Orientation="Horizontal">
+                <Image Source="favv.png" HeightRequest="25" Margin="5,10"/>
+                <Label Text="Favourites" FontSize="14" Margin="5,3,0,0" FontFamily="Poppins" VerticalOptions="Center"/>
+                <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
+                Margin="0,3,10,0"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame Margin="20,0" Padding="0" HasShadow="True" BorderColor="LightGrey" CornerRadius="10">
+            <StackLayout Orientation="Horizontal">
+                <Image Source="narudzbe.png" HeightRequest="30" Margin="10"/>
+                <Label Text="Moje narudzbe" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center"/>
+                <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
+                Margin="0,3,10,0"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame Margin="20,10" Padding="0" HasShadow="True" BorderColor="LightGrey" CornerRadius="10">
+            <StackLayout Orientation="Horizontal">
+                <Image Source="sigurnost.png" HeightRequest="30" Margin="10"/>
+                <Label Text="Sigurnost" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center"/>
+                <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
+                Margin="0,3,10,0"/>
+            </StackLayout>
+        </Frame>
+
+        <Frame Margin="20,0" Padding="0" HasShadow="True" BorderColor="LightGrey" CornerRadius="10">
+            <StackLayout Orientation="Horizontal">
+                <Image Source="helpcenter.png" HeightRequest="30" Margin="10"/>
+                <Label Text="Pomoc" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center"/>
+                <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
+         Margin="0,3,10,0"/>
+            </StackLayout>
+        </Frame>
+
+        <Button Clicked="Logout_Clicked" Text="LOG OUT" Margin="80,30,80,30" CornerRadius="30" BackgroundColor="#1E3A8A"/>
+    </StackLayout>
 </ContentPage>
