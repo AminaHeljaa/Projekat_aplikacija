@@ -5,10 +5,10 @@ using Microsoft.Maui.Controls;
 using Projekatv2.Models;
 using Projekatv2.Services;
 using Projekatv2.Views;
-
-namespace Projekatv2.ViewModel
+using Projekatv2.Binding;
+namespace Projekatv2.Binding
 {
-    public class HomeViewModel : BindableObject
+    public class Home : BindableObject
     {
         public ObservableCollection<Product> Products { get; set; }
         public ObservableCollection<Product> FavoriteProducts { get; set; }
@@ -43,12 +43,19 @@ namespace Projekatv2.ViewModel
         public ICommand SelectCategoryCommand { get; }
         public ICommand OpenProductDetailsCommand { get; }
 
-        public HomeViewModel()
+        public Home()
         {
             // SVI PROIZVODI
             Products = new ObservableCollection<Product>
             {
-                new Product { Name="Dorina poffertjes", Description="Za ljubitelje Dorina čokolade", Price=5.5, Image="dorina1.png", Category="Holandski" },
+              new Product {
+    Name="Dorina poffertjes",
+    Description="Mekani mini poffertjes prekriveni bogatom Dorina čokoladom koja se savršeno topi na toplim palačinkama. Idealni za sve ljubitelje klasične čokolade i intenzivnog okusa.",
+    Price=5.5,
+    Image="dorina1.png",
+    Category="Holandski",
+    Rating = 4.7
+},
                 new Product { Name="Bueno poffertjes", Description="Bueno grande čokolada", Price=6.0, Image="bueno1.png", Category="Holandski" },
                 new Product { Name="Voćni zalogaj poffertjes", Description="Svježina voća", Price=6.0, Image="vocnizalogaj1.jpg", Category="Holandski" },
                 new Product { Name="Slatki zalogaj poffertjes", Description="Sa dodacima banane i šlaga", Price=5.5, Image="slatkizalogaj1.jpg", Category="Holandski" },
@@ -83,7 +90,7 @@ namespace Projekatv2.ViewModel
             // FAVORITI (horizontalni skrol)
             FavoriteProducts = new ObservableCollection<Product>
             {
-                new Product { Name="Pistacija Palačinak", Image="pistacija.jpg", Price=2.5 },
+               new Product { Name="Pistacija Palačinak", Description="Sočna palačinka prekrivena kremastom pistacija pastom i posuta hrskavim komadićima pistacija. Savršen balans između blagih orašastih nota i slatkog okusa, idealno za sve ljubitelje pistacija.", Price=2.5, Image="pistacija.jpg", Category="Palacinci", Rating=4.6 },
                 new Product { Name="Rafaelo Palačinak", Image="rafaelo1.jpg", Price=3 },
                 new Product { Name="Voćni Palačinak", Image="palacinakmalina.png", Price=3.5 },
                 new Product { Name="Jafa Palačinak", Image="jafa.png", Price=3 }

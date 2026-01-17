@@ -1,32 +1,34 @@
-using Projekatv2.ViewModel;
+using Projekatv2.Binding;
 using Microsoft.Maui.Controls;
 using System;
-using System.Linq;
+using System.Linq; 
+using Projekatv2.Views;
+using Projekatv2.Binding;
 
 
 namespace Projekatv2.Views;
 
 public partial class CartPage : ContentPage
 {
-    private CartViewModel ViewModel => BindingContext as CartViewModel;
+    private Korpa Binding => BindingContext as Korpa;
 
     public CartPage()
     {
         InitializeComponent();
         Shell.SetNavBarIsVisible(this, false);
         // Postavi BindingContext
-        BindingContext = new CartViewModel();
+        BindingContext = new Korpa();
 
         // Provjeri da li je korpa prazna
         UpdateEmptyState();
 
         // Automatski update kada se promijeni korpa
-        ViewModel.Cart.CollectionChanged += (s, e) => UpdateEmptyState();
+        Binding.Cart.CollectionChanged += (s, e) => UpdateEmptyState();
     }
 
     private void UpdateEmptyState()
     {
-        bool isEmpty = ViewModel.Cart.Count == 0;
+        bool isEmpty = Binding.Cart.Count == 0;
         CartCollection.IsVisible = !isEmpty;
         EmptyCart.IsVisible = isEmpty;
     }
@@ -39,23 +41,14 @@ public partial class CartPage : ContentPage
             .First(tab => tab.Title == "Home");
     }
 
+    private async void PotvrdiBolan(object sender, EventArgs e)
+    {
+        await Navigation.PushModalAsync(new NarudzbaPage());
+    }
+
 
 
 
     // Dugme "Izvrši narudžbu"
-    private async void OnPlaceOrder(object sender, EventArgs e)
-    {
-        if (ViewModel.Cart.Count == 0)
-        {
-            await DisplayAlert("Korpa", "Vaša korpa je prazna!", "OK");
-            return;
-        }
 
-        // Ovdje možeš dodati logiku za spremanje narudžbe u bazu
-
-        await DisplayAlert("Narudžba", "Vaša narudžba je izvršena!", "OK");
-
-        // Oèisti korpu
-        ViewModel.Cart.Clear();
-    }
 }

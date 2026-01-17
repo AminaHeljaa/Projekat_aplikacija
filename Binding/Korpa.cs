@@ -6,9 +6,9 @@ using Microsoft.Maui.Controls;
 using Projekatv2.Models;
 using Projekatv2.Services;
 
-namespace Projekatv2.ViewModel
+namespace Projekatv2.Binding
 {
-    public class CartViewModel : BindableObject
+    public class Korpa : BindableObject
     {
         public ObservableCollection<CartItem> Cart { get; }
 
@@ -16,7 +16,7 @@ namespace Projekatv2.ViewModel
         public ICommand DecreaseCommand { get; }
         public ICommand RemoveCommand { get; }
 
-        public CartViewModel()
+        public Korpa()
         {
             Cart = CartService.Instance.Cart;
             Cart.CollectionChanged += (s, e) => OnPropertyChanged(nameof(TotalPrice));

@@ -7,16 +7,16 @@
     xmlns:views="clr-namespace:Projekatv2.Views"
     Shell.TabBarUnselectedColor="Black" 
     
-    Shell.TabBarBackgroundColor="#FFF6E5"
+    Shell.TabBarBackgroundColor="#FFF9E5"
     Shell.TabBarTitleColor="#F4B400"
    
     Shell.ForegroundColor="#1F3A5F"
      Shell.TabBarForegroundColor="#1F3A5F">
-   
-
+    <!-- Flyout koji se otvara klikom na hamburger -->
+  
     <TabBar>
         <!-- Home -->
-        <Tab x:Name="Home" Title="Home" Icon="home.png">
+        <Tab x:Name="Home" Title="Home" Icon="home.png" Route="home">
             <ShellContent ContentTemplate="{DataTemplate local:MainPage}" />
         </Tab>
 

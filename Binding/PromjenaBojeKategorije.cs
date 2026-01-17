@@ -2,7 +2,7 @@
 using System.Globalization;
 using Microsoft.Maui.Controls;
 
-namespace Projekatv2.ViewModel
+namespace Projekatv2.Binding
 {
     public class CategoryToColorConverter : IValueConverter
     {

@@ -19,14 +19,14 @@
         <Label Margin="0,20" 
                Text="Log in to continue" 
                HorizontalOptions="Center" 
-               FontSize="15"/>
+               FontSize="15" TextColor="Black"/>
 
         <Frame Margin="30,10"  Padding="10,3" CornerRadius="20" BackgroundColor="#FDF8F3" BorderColor="#E5D5C5" >
-            <Entry x:Name="EntryMail" Placeholder=" Enter Your Email" HorizontalOptions="FillAndExpand"  FontSize="15" PlaceholderColor="#A3A3A3" FontAttributes="Bold"/>
+            <Entry x:Name="EntryMail" Placeholder=" Enter Your Email" HorizontalOptions="FillAndExpand"  FontSize="15" PlaceholderColor="#A3A3A3" FontAttributes="Bold" TextColor="Black"/>
         </Frame>
 
         <Frame Margin="30,0" Padding="10,3" CornerRadius="20" BackgroundColor="#FDF8F3" BorderColor="#E5D5C5" >
-            <Entry x:Name="EntryPass" Placeholder="Enter Your Password" HorizontalOptions="FillAndExpand"  FontSize="15" PlaceholderColor="#A3A3A3" FontAttributes="Bold"/>
+            <Entry x:Name="EntryPass" Placeholder="Enter Your Password" HorizontalOptions="FillAndExpand"  FontSize="15" PlaceholderColor="#A3A3A3" FontAttributes="Bold" TextColor="Black" IsPassword="True"/>
         </Frame>
 
         <Button Text="LOG IN" 
@@ -41,7 +41,7 @@
         </Button>
 
         <StackLayout Margin="0,-15" Orientation="Horizontal" HorizontalOptions="Center" >
-            <Label Text="Dont have an account?"/>
+            <Label Text="Dont have an account?" TextColor="Black"/>
             <Label Text=" Sign up here!" TextColor="#A15A2B"/>
         </StackLayout>
     </StackLayout>

@@ -13,18 +13,15 @@ public partial class LocationPage : ContentPage
     }
     private async void OpenGoogleMaps_Clicked(object sender, EventArgs e)
     {
+        // Naziv lokacije
+        var placeName = "Palaèinkara Slatki zalogaj Zenica";
 
-        // Koordinate 
-        var latitude = 44.2034;
-        var longitude = 17.9077;
+        // Google Maps pretraga po nazivu (najpreciznije)
+        var url = $"https://www.google.com/maps/search/?api=1&query={Uri.EscapeDataString(placeName)}";
 
-        // Direktno otvara lokaciju sa pinom
-        var url = $"https://www.google.com/maps/place/{latitude},{longitude}";
-
-
-        // Otvori URL u web pregledniku
         await Launcher.OpenAsync(url);
     }
+
 
 
 }

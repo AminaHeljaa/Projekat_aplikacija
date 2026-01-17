@@ -1,33 +1,30 @@
 ﻿
 using Projekatv2.Views;
-using Projekatv2.ViewModel;
+using Projekatv2.Binding;
+using Microsoft.Maui.Controls;
 using Projekatv2.Models;
 using Projekatv2.Services;
 namespace Projekatv2;
 
 public partial class MainPage : ContentPage
 {
-    private HomeViewModel ViewModel => BindingContext as HomeViewModel;
+    private Home Binding=> BindingContext as Home;
 
     public MainPage()
     {
         InitializeComponent();
-        BindingContext = new HomeViewModel();
+        BindingContext = new Home();
     }
 
-    private async void OnProductSelected(object sender, SelectionChangedEventArgs e)
+    private async void OnProductTapped(object sender, EventArgs e)
     {
-        if (e.CurrentSelection.FirstOrDefault() is Product selectedProduct)
+        // Dobij proizvod vezan za frame
+        if (sender is Frame frame && frame.BindingContext is Product tappedProduct)
         {
-            await Shell.Current.GoToAsync(nameof(ProductDetailsPage),
-                new Dictionary<string, object>
-                {
-                    { "Product", selectedProduct }
-                });
-
-            ((CollectionView)sender).SelectedItem = null;
+            await Navigation.PushAsync(new ProductDetailsPage(tappedProduct));
         }
     }
+
 
     // Funkcija koja vraća sliku srca ovisno o statusu favorita
     private string GetHeartImage(bool isFavorite)
@@ -49,17 +46,6 @@ public partial class MainPage : ContentPage
         // Postavi sliku koristeći funkciju
         button.Source = GetHeartImage(product.IsFavorite);
 
-        // Dodaj ili ukloni iz FavoriteProducts liste
-        if (product.IsFavorite)
-        {
-            if (!ViewModel.FavoriteProducts.Contains(product))
-                ViewModel.FavoriteProducts.Add(product);
-        }
-        else
-        {
-            if (ViewModel.FavoriteProducts.Contains(product))
-                ViewModel.FavoriteProducts.Remove(product);
-        }
     }
 
     private void Button_Clicked(object sender, EventArgs e)
@@ -79,11 +65,16 @@ public partial class MainPage : ContentPage
 
     private void ImageButton_Clicked(object sender, EventArgs e)
     {
+     
+    
 
     }
 
-    private void OnSearch_Clicked_1(object sender, EventArgs e)
+    private async void OnSearch_Clicked_1(object sender, EventArgs e)
     {
+        var home = Binding;
+        if (home == null) return;
 
+        await Navigation.PushAsync(new SearchPage(home.Products));
     }
 }

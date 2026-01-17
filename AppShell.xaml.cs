@@ -7,8 +7,8 @@ namespace Projekatv2
         public AppShell()
         {
             InitializeComponent();
-        
-           
+
+            Routing.RegisterRoute(nameof(NarudzbaPage), typeof(NarudzbaPage));
         }
     }
 }

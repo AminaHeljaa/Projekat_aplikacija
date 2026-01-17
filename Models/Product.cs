@@ -9,5 +9,7 @@
         public string Image { get; set; }
         public string Category { get; set; }
         public bool IsFavorite { get; set; }
+        public double Rating { get; set; }   // npr 4.5
+        public int Reviews { get; set; }
     }
 }

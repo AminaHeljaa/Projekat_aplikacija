@@ -1,0 +1,121 @@
+<ContentPage
+    x:Class="Projekatv2.Views.SearchPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Pretraga" Shell.NavBarIsVisible="False"
+    BackgroundColor="#F8F8F8">
+
+    <VerticalStackLayout Padding="15" Spacing="15">
+        
+
+            <!-- BACK BUTTON / IKONA -->
+            <HorizontalStackLayout VerticalOptions="Start" HorizontalOptions="Start" Spacing="10">
+                <Label Text="←"
+               FontSize="25"
+               TextColor="#1E3A8A"
+               VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
+                    </Label.GestureRecognizers>
+                </Label>
+            </HorizontalStackLayout>
+
+        <Frame CornerRadius="25"
+       BackgroundColor="White"
+       HasShadow="True"
+       Padding="0"
+       HeightRequest="50">
+            <Grid Padding="10" ColumnDefinitions="Auto, *" VerticalOptions="Center">
+
+                <!-- Ikona lijevo -->
+                <Image Source="search.png"
+               HeightRequest="25"
+               WidthRequest="25"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"/>
+
+                <!-- SearchBar -->
+                <SearchBar x:Name="SearchBar"
+                   Placeholder="Pretraži palačinke, holandski..."
+                   TextChanged="OnSearchTextChanged" 
+                   BackgroundColor="Transparent"
+                   HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Center"
+                   FontSize="14"
+                   TextColor="Black"
+                   CancelButtonColor="#F4B400"
+                   Grid.Column="0"/>
+            </Grid>
+        </Frame>
+
+
+        <!-- PRIKAZ PROIZVODA -->
+        <CollectionView x:Name="ProductsCollection"
+                        ItemsLayout="VerticalList"
+                        Margin="0"
+                        SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame CornerRadius="20"
+                           Margin="0,5"
+                           Padding="0"
+                           HasShadow="True"
+                           BackgroundColor="White">
+
+                        <Grid ColumnDefinitions="100,*,Auto"
+                              RowDefinitions="Auto"
+                              Padding="10">
+
+                            <!-- SLIKA SA GRADIENTOM -->
+                            <Frame HeightRequest="80"
+                                   WidthRequest="80"
+                                   CornerRadius="15"
+                                   IsClippedToBounds="True"
+                                   HasShadow="True"
+                                   Grid.Column="0">
+                                <Frame.Background>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                        <GradientStop Color="#FFD966" Offset="0.0"/>
+                                        <GradientStop Color="#F4B400" Offset="1.0"/>
+                                    </LinearGradientBrush>
+                                </Frame.Background>
+                                <Image Source="{Binding Image}"
+                                       Aspect="AspectFill"
+                                       HeightRequest="80"
+                                       WidthRequest="80"/>
+                            </Frame>
+
+                            <!-- DETALJI PROIZVODA -->
+                            <VerticalStackLayout Grid.Column="1" Padding="10,0" Spacing="4">
+                                <Label Text="{Binding Name}"
+                                       FontAttributes="Bold"
+                                       FontSize="16"
+                                       TextColor="#1E3A8A"
+                                       LineBreakMode="TailTruncation"/>
+                                <Label Text="{Binding Category}"
+                                       FontSize="12"
+                                       TextColor="Gray"/>
+                                <Label Text="{Binding Price, StringFormat='{}{0} KM'}"
+                                       FontAttributes="Bold"
+                                       FontSize="14"
+                                       TextColor="#F4B400"/>
+                            </VerticalStackLayout>
+
+                            <!-- NARUČI DUGME -->
+                            <Button Text="Naruči"
+                                    Grid.Column="2"
+                                    VerticalOptions="Center"
+                                    HeightRequest="35"
+                                    WidthRequest="75"
+                                    BackgroundColor="#F4B400"
+                                    TextColor="White"
+                                    CornerRadius="18"
+                                    Clicked="Button_Clicked"/>
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

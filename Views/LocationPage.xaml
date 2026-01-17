@@ -4,7 +4,7 @@
              x:Class="Projekatv2.Views.LocationPage"
              Title="LocationPage"
              NavigationPage.HasNavigationBar="False"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False" BackgroundColor="White">
 
     <StackLayout Margin="0,10">
         <!-- HEADER: Hamburger | Logo + Naziv | Pretraga -->
@@ -32,18 +32,11 @@
                 />
             </HorizontalStackLayout>
 
-            <!-- Pretraga / lupa -->
-            <ImageButton Source="search.png"
-                  WidthRequest="40"
-                  HeightRequest="40"
-                  BackgroundColor="Transparent"
-                  Grid.Column="2"
-                  HorizontalOptions="End"
-                  VerticalOptions="Center" Scale="0.5"/>
+          
         </Grid>
-
-        <Label Text="Lokacija" FontSize="23" FontFamily="Poppins" TextColor="#1E3A8A" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,2"/>
-
+        <StackLayout Spacing="5">
+        <Label Text="Lokacija" FontSize="22" FontFamily="Poppins" TextColor="#1E3A8A" FontAttributes="Bold" HorizontalOptions="Center" Margin="0,2"/>
+</StackLayout>
         <ScrollView
              x:Name="RightOnlyScroll"
              Orientation="Horizontal"
@@ -77,17 +70,17 @@
 
         <StackLayout Margin="20,3" Orientation="Horizontal" Spacing="5">
             <Image Source="adr.png" HeightRequest="20"/>
-            <Label Text="Muhameda Sejde Serdarevića br. 8, Zenica" VerticalOptions="Center"/>
+            <Label Text="Muhameda Sejde Serdarevića br. 8, Zenica" VerticalOptions="Center" TextColor="Black"/>
         </StackLayout>
 
         <StackLayout Margin="20,3" Orientation="Horizontal" Spacing="5">
             <Image Source="tel.png" HeightRequest="20"/>
-            <Label Text="062 584 7859" VerticalOptions="Center"/>
+            <Label Text="062 584 7859" VerticalOptions="Center" TextColor="Black"/>
         </StackLayout>
 
         <StackLayout Margin="21,1" Orientation="Horizontal" Spacing="5">
             <Image Source="emaill.png" HeightRequest="14"/>
-            <Label Text="slatkizalogaj@gamil.com" VerticalOptions="Center"/>
+            <Label Text="slatkizalogaj@gamil.com" VerticalOptions="Center" TextColor="Black"/>
         </StackLayout>
 
         <StackLayout Orientation="Horizontal" Spacing="5" HorizontalOptions="EndAndExpand" Margin="0,10,10,0">

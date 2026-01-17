@@ -3,8 +3,8 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     NavigationPage.HasNavigationBar="False"
-    Shell.NavBarIsVisible="False">
-    <StackLayout>
+    Shell.NavBarIsVisible="False" BackgroundImageSource="pozadina2.png">
+    <StackLayout Margin="0,10" >
 
         <!-- HEADER: Hamburger | Logo + Naziv | Pretraga -->
         <Grid Margin="0,7" Padding="5" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start" HorizontalOptions="Fill">
@@ -31,14 +31,7 @@
               />
             </HorizontalStackLayout>
 
-            <!-- Pretraga / lupa -->
-            <ImageButton Source="search.png"
-                WidthRequest="40"
-                HeightRequest="40"
-                BackgroundColor="Transparent"
-                Grid.Column="2"
-                HorizontalOptions="End"
-                VerticalOptions="Center" Scale="0.5"/>
+          
         </Grid>
 
         <Frame Padding="0" HeightRequest="120" WidthRequest="120" CornerRadius="3000" Margin="0,12">
@@ -51,7 +44,7 @@
         <Frame Margin="20,23,20,0" Padding="0" HasShadow="True" BorderColor="LightGrey" CornerRadius="10">
             <StackLayout Orientation="Horizontal">
                 <Image Source="editprofile.png" HeightRequest="30" Margin="10"/>
-                <Label Text="Uredi Profil" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center"/>
+                <Label Text="Uredi Profil" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center" TextColor="Black"/>
                 <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
                        Margin="0,3,10,0"/>
             </StackLayout>
@@ -60,7 +53,7 @@
         <Frame Margin="20,10" Padding="2" HasShadow="True" BorderColor="LightGrey" CornerRadius="10">
             <StackLayout Orientation="Horizontal">
                 <Image Source="favv.png" HeightRequest="25" Margin="5,10"/>
-                <Label Text="Favourites" FontSize="14" Margin="5,3,0,0" FontFamily="Poppins" VerticalOptions="Center"/>
+                <Label Text="Favourites" FontSize="14" Margin="5,3,0,0" FontFamily="Poppins" VerticalOptions="Center" TextColor="Black"/>
                 <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
                 Margin="0,3,10,0"/>
             </StackLayout>
@@ -69,7 +62,7 @@
         <Frame Margin="20,0" Padding="0" HasShadow="True" BorderColor="LightGrey" CornerRadius="10">
             <StackLayout Orientation="Horizontal">
                 <Image Source="narudzbe.png" HeightRequest="30" Margin="10"/>
-                <Label Text="Moje narudzbe" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center"/>
+                <Label Text="Moje narudzbe" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center" TextColor="Black"/>
                 <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
                 Margin="0,3,10,0"/>
             </StackLayout>
@@ -78,7 +71,7 @@
         <Frame Margin="20,10" Padding="0" HasShadow="True" BorderColor="LightGrey" CornerRadius="10">
             <StackLayout Orientation="Horizontal">
                 <Image Source="sigurnost.png" HeightRequest="30" Margin="10"/>
-                <Label Text="Sigurnost" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center"/>
+                <Label Text="Sigurnost" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center" TextColor="Black"/>
                 <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
                 Margin="0,3,10,0"/>
             </StackLayout>
@@ -87,12 +80,12 @@
         <Frame Margin="20,0" Padding="0" HasShadow="True" BorderColor="LightGrey" CornerRadius="10">
             <StackLayout Orientation="Horizontal">
                 <Image Source="helpcenter.png" HeightRequest="30" Margin="10"/>
-                <Label Text="Pomoc" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center"/>
+                <Label Text="Pomoc" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center" TextColor="Black"/>
                 <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
          Margin="0,3,10,0"/>
             </StackLayout>
         </Frame>
 
-        <Button Clicked="Logout_Clicked" Text="LOG OUT" Margin="80,30,80,30" CornerRadius="30" BackgroundColor="#1E3A8A"/>
+        <Button Clicked="Logout_Clicked" Text="LOG OUT" Margin="80,30,80,30" CornerRadius="30" BackgroundColor="#1E3A8A" TextColor="White"/>
     </StackLayout>
 </ContentPage>

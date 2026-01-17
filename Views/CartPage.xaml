@@ -3,20 +3,38 @@
     x:Name="ThisPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:vm="clr-namespace:Projekatv2.ViewModel"
+    xmlns:binding="clr-namespace:Projekatv2.Binding"
     BackgroundColor="#F4F4F4"
-        NavigationPage.HasNavigationBar="False">
+    NavigationPage.HasNavigationBar="False">
 
     <ContentPage.BindingContext>
-        <vm:CartViewModel />
+        <binding:Korpa />
     </ContentPage.BindingContext>
 
-    <Grid RowDefinitions="*,Auto" Padding="16">
-      
+    <!-- GRID -->
+    <Grid RowDefinitions="Auto,*,Auto" Padding="16">
+
+        <!-- HEADER -->
+        <StackLayout Grid.Row="0" Spacing="8" Margin="0,0,0,16">
+
+            <Label Text="←"
+                   FontSize="25"
+                   TextColor="#5C4033">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackToHome"/>
+                </Label.GestureRecognizers>
+            </Label>
+
+            <Label Text="Vaša korpa"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="#5C4033"/>
+        </StackLayout>
+
         <!-- PRAZNA KORPA -->
         <StackLayout
             x:Name="EmptyCart"
-            Grid.Row="0"
+            Grid.Row="1"
             IsVisible="{Binding IsCartEmpty}"
             HorizontalOptions="Center"
             VerticalOptions="Center">
@@ -32,60 +50,103 @@
         <!-- LISTA PROIZVODA -->
         <CollectionView
             x:Name="CartCollection"
-            Grid.Row="0"
+            Grid.Row="1"
             ItemsSource="{Binding Cart}"
             SelectionMode="None"
             IsVisible="{Binding IsCartNotEmpty}">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Frame CornerRadius="15" Padding="10" Margin="0,0,0,12" BackgroundColor="White" HasShadow="True">
-                        <Grid ColumnDefinitions="90,*,Auto" RowDefinitions="Auto,Auto,Auto" ColumnSpacing="10">
+                    <Frame CornerRadius="15"
+                           Padding="10"
+                           Margin="0,0,0,12"
+                           BackgroundColor="White"
+                           HasShadow="True">
 
-                            <!-- Slika sa gradientom i corner radius -->
-                            <Frame CornerRadius="15" HasShadow="False" Padding="0" HeightRequest="90" WidthRequest="90" IsClippedToBounds="True" Grid.RowSpan="3" Grid.Column="0">
+                        <Grid ColumnDefinitions="90,70,Auto"
+                              RowDefinitions="Auto,Auto,Auto"
+                              ColumnSpacing="10">
+
+                            <!-- SLIKA -->
+                            <Frame CornerRadius="15"
+                                   HasShadow="False"
+                                   Padding="0"
+                                   HeightRequest="90"
+                                   WidthRequest="90"
+                                   IsClippedToBounds="True"
+                                   Grid.RowSpan="3"
+                                   Grid.Column="0">
                                 <Frame.Background>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
                                         <GradientStop Color="#FFF8E1" Offset="0.0"/>
                                         <GradientStop Color="#F5E0C3" Offset="1.0"/>
                                     </LinearGradientBrush>
                                 </Frame.Background>
-                                <Image Source="{Binding Image}" Aspect="AspectFill" />
+                                <Image Source="{Binding Image}" Aspect="AspectFill"/>
                             </Frame>
 
-                            <!-- Naziv -->
-                            <Label Text="{Binding Name}" FontSize="16" FontAttributes="Bold" Grid.Row="0" Grid.Column="1" TextColor="#5C4033" />
+                            <!-- NAZIV -->
+                            <Label Text="{Binding Name}"
+                                   FontSize="16"
+                                   FontAttributes="Bold"
+                                   Grid.Row="0"
+                                   Grid.Column="1"
+                                   TextColor="#5C4033"/>
 
-                            <!-- Opis -->
-                            <Label Text="{Binding Category}" FontSize="13" TextColor="Gray" Grid.Row="1" Grid.Column="1" LineBreakMode="TailTruncation"/>
+                            <!-- OPIS -->
+                            <Label Text="{Binding Category}"
+                                   FontSize="13"
+                                   TextColor="Gray"
+                                   Grid.Row="1"
+                                   Grid.Column="1"
+                                   LineBreakMode="TailTruncation"/>
 
-                            <!-- Cijena -->
-                            <Label Text="{Binding Price, StringFormat='{}{0} KM'}" FontAttributes="Bold" TextColor="#F4B400" FontSize="14" Grid.Row="2" Grid.Column="1"/>
+                            <!-- CIJENA -->
+                            <Label Text="{Binding Price, StringFormat='{}{0} KM'}"
+                                   FontAttributes="Bold"
+                                   TextColor="#F4B400"
+                                   FontSize="14"
+                                   Grid.Row="2"
+                                   Grid.Column="1"/>
 
-                            <!-- Količina i kontrola -->
-                            <HorizontalStackLayout Grid.Row="0" Grid.RowSpan="3" Grid.Column="2" Spacing="0" VerticalOptions="Center">
+                            <!-- KONTROLE -->
+                            <HorizontalStackLayout
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                Grid.Column="2"
+                                Spacing="4"
+                                VerticalOptions="Center">
 
-                                <Button Text="-" WidthRequest="32" HeightRequest="32" CornerRadius="16"
+                                <Button Text="-"
+                                        WidthRequest="32"
+                                        HeightRequest="32"
+                                        CornerRadius="16"
                                         BackgroundColor="#E0E0E0"
                                         Command="{Binding BindingContext.DecreaseCommand, Source={x:Reference ThisPage}}"
                                         CommandParameter="{Binding .}"/>
 
-                                <Label Text="{Binding Quantity}" WidthRequest="26" FontSize="14"
-                                       HorizontalTextAlignment="Center" VerticalTextAlignment="Center" TextColor="Black"/>
+                                <Label Text="{Binding Quantity}"
+                                       WidthRequest="26"
+                                       FontSize="14"
+                                       HorizontalTextAlignment="Center"
+                                       VerticalTextAlignment="Center" TextColor="Black"/>
 
-                                <Button Text="+" WidthRequest="22" HeightRequest="22" CornerRadius="16"
-                                        BackgroundColor="#F4B400" TextColor="White"
+                                <Button Text="+"
+                                        WidthRequest="32"
+                                        HeightRequest="32"
+                                        CornerRadius="16"
+                                        BackgroundColor="#F4B400"
+                                        TextColor="White"
                                         Command="{Binding BindingContext.IncreaseCommand, Source={x:Reference ThisPage}}"
                                         CommandParameter="{Binding .}"/>
 
-                                <ImageButton
-    Source="garbage.png" Scale="0.5"
-    WidthRequest="22"
-    HeightRequest="22"
-    BackgroundColor="Transparent"
-    Command="{Binding BindingContext.RemoveCommand, Source={x:Reference ThisPage}}"
-    CommandParameter="{Binding .}" />
-
+                                <ImageButton Source="garbage.png"
+                                             Scale="0.5"
+                                             WidthRequest="22"
+                                             HeightRequest="22"
+                                             BackgroundColor="Transparent"
+                                             Command="{Binding BindingContext.RemoveCommand, Source={x:Reference ThisPage}}"
+                                             CommandParameter="{Binding .}"/>
                             </HorizontalStackLayout>
 
                         </Grid>
@@ -95,21 +156,39 @@
         </CollectionView>
 
         <!-- DONJI SUMMARY -->
-        <Frame Grid.Row="1" Padding="16" CornerRadius="18" BackgroundColor="White" HasShadow="True">
+        <Frame Grid.Row="2"
+               Padding="16"
+               CornerRadius="18"
+               BackgroundColor="White"
+               HasShadow="True">
+
             <StackLayout Spacing="12">
 
                 <Grid ColumnDefinitions="*,Auto">
                     <Label Text="Ukupno" FontSize="16"/>
-                    <Label Text="{Binding TotalPrice, StringFormat='{0} KM'}" FontSize="18" FontAttributes="Bold" TextColor="#F4B400"/>
+                    <Label Text="{Binding TotalPrice, StringFormat='{0} KM'}"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="#F4B400"/>
                 </Grid>
 
-                <Button Text="Izvrši narudžbu" HeightRequest="50" CornerRadius="14" BackgroundColor="#F4B400"
-                        TextColor="White" FontAttributes="Bold" Clicked="OnPlaceOrder"/>
+                <Button Text="Izvrši narudžbu"
+                        HeightRequest="50"
+                        CornerRadius="14"
+                        BackgroundColor="#F4B400"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        Clicked="PotvrdiBolan"/>
 
-                <Button Text="Naruči još" HeightRequest="44" CornerRadius="14" BackgroundColor="#EFEFEF"
-                        TextColor="Black" Clicked="OnBackToHome"/>
+                <Button Text="Naruči još"
+                        HeightRequest="44"
+                        CornerRadius="14"
+                        BackgroundColor="#EFEFEF"
+                        TextColor="Black"
+                        Clicked="OnBackToHome"/>
 
             </StackLayout>
         </Frame>
+
     </Grid>
 </ContentPage>

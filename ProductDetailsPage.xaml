@@ -1,29 +1,189 @@
-<ContentPage
+﻿<ContentPage
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="Projekatv2.Views.ProductDetailsPage">
+    x:Class="Projekatv2.Views.ProductDetailsPage"
+    BackgroundColor="White"
+    NavigationPage.HasNavigationBar="False"
+    Shell.NavBarIsVisible="False">
 
-    <VerticalStackLayout Padding="20" Spacing="15">
+    <!-- Grid sa 2 reda: Header i scrollable content -->
+    <Grid RowDefinitions="Auto,*">
 
-        <Image Source="{Binding Image}"
-               HeightRequest="220"
-               Aspect="AspectFill"/>
+        <!-- BACK BUTTON -->
+        <Label
+            Text="←"
+            FontSize="24"
+            Margin="20,10"
+            TextColor="Black">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnBackTapped"/>
+            </Label.GestureRecognizers>
+        </Label>
 
-        <Label Text="{Binding Name}"
-               FontSize="22"
-               FontAttributes="Bold"/>
+        <!-- Scrollable content -->
+        <ScrollView Grid.Row="1" Margin="0,0,0,0">
+            <StackLayout Spacing="20" Padding="16,0,16,16">
 
-        <Label Text="{Binding Description}"
-               TextColor="Gray"/>
+                <!-- PROIZVOD -->
+                <Frame
+                    CornerRadius="30"
+                    Padding="0"
+                    HasShadow="True"
+                    BackgroundColor="#FFF9F2">
 
-        <Label Text="{Binding Price, StringFormat='{}{0} KM'}"
-               FontSize="18"
-               TextColor="#F4B400"
-               FontAttributes="Bold"/>
+                    <Grid
+                        Padding="0"
+                        RowDefinitions="Auto,Auto,Auto,Auto,Auto">
 
-        <Button Text="Dodaj u korpu"
-                BackgroundColor="#F4B400"
-                TextColor="White"
-                CornerRadius="15"/>
-    </VerticalStackLayout>
+                        <!-- CIJENA -->
+                        <Frame
+                            BackgroundColor="#F4B400"
+                            CornerRadius="40"
+                            HeightRequest="80"
+                            WidthRequest="80"
+                            HorizontalOptions="End"
+                            Margin="10,0,20,20"
+                            VerticalOptions="End">
+
+                            <Label
+                                Text="{Binding Price, StringFormat='{0:0.00} KM'}"
+                                HorizontalTextAlignment="Center"
+                                VerticalTextAlignment="Center"
+                                FontAttributes="Bold"
+                                FontSize="17"/>
+                        </Frame>
+
+                        <!-- SLIKA -->
+                        <Image
+                            Grid.Row="0"
+                            Source="{Binding Image}"
+                            HeightRequest="340"
+                            Aspect="Fill"
+                            Margin="0,-40,0,0" />
+
+                        <!-- NAZIV -->
+                        <Label
+                            Grid.Row="1"
+                            Text="{Binding Name}"
+                            FontSize="22"
+                            FontAttributes="Bold"
+                            TextColor="#2C2C2C"
+                            Margin="10,10,0,0"/>
+
+                        <!-- RATING -->
+                        <StackLayout Margin="10"
+                            Grid.Row="2"
+                            Orientation="Horizontal"
+                            Spacing="6">
+
+                            <Label Text="⭐"/>
+                            <Label Text="{Binding Rating}" FontAttributes="Bold" TextColor="Black"/>
+                        </StackLayout>
+
+                        <!-- OPIS -->
+                        <Label
+                            Grid.Row="3"
+                            Text="{Binding Description}"
+                            FontSize="14"
+                            TextColor="Gray"
+                            Margin="10,8,10,10"/>
+
+                        <!-- NARUČI -->
+                        <Button
+                            Grid.Row="4"
+                            Text="Naruči sada"
+                            BackgroundColor="#F4B400"
+                            TextColor="White"
+                            CornerRadius="20"
+                            Margin="10,16,10,10"
+                            Clicked="DodajBolan"/>
+                    </Grid>
+                </Frame>
+
+
+                <!-- REZENZIJE -->
+                <StackLayout>
+                    <Label Text="Recenzije korisnika" FontAttributes="Bold" FontSize="17" Margin="5,0,0,10" TextColor="Black"/>
+
+                    <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
+                        <StackLayout Orientation="Horizontal" Spacing="12">
+
+                            <!-- Recenzija 1 -->
+                            <Frame BackgroundColor="white"
+                   CornerRadius="20"
+                   WidthRequest="300"
+                   Padding="10"
+                   HasShadow="True" BorderColor="#F4B400" >
+                                <Grid ColumnDefinitions="60, *" RowDefinitions="Auto">
+                                    <!-- SLIKA KORISNIKA -->
+                                    <Image Source="amina.png"
+                           HeightRequest="50"
+                           WidthRequest="50"
+                           Aspect="AspectFill"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                          
+                           Grid.Column="0"/>
+
+                                    <!-- KOMENTAR I IME -->
+                                    <StackLayout Grid.Column="1" Spacing="4">
+                                        <Label Text="Amina H." FontAttributes="Bold" FontSize="14" TextColor="#F4B400"/>
+                                        <Label Text="Odličan proizvod! Vrlo brzo stiglo." FontSize="12" TextColor="Gray" LineBreakMode="WordWrap"/>
+                                       
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+
+                            <!-- Recenzija 2 -->
+                            <Frame BackgroundColor="White"
+                   CornerRadius="20"
+                   WidthRequest="300"
+                   Padding="10"
+                   HasShadow="True" BorderColor="#F4B400">
+                                <Grid ColumnDefinitions="60, *" RowDefinitions="Auto">
+                                    <Image Source="amina.png"
+                           HeightRequest="50"
+                           WidthRequest="50"
+                           Aspect="AspectFill"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Clip="EllipseGeometry, Center=25,25, RadiusX=25, RadiusY=25"
+                           Grid.Column="0"/>
+                                    <StackLayout Grid.Column="1" Spacing="4">
+                                        <Label Text="Miran K." FontAttributes="Bold" FontSize="14" TextColor="#F4B400"/>
+                                        <Label Text="Super pakovanje i kvalitet parfema." FontSize="12" TextColor="Gray" LineBreakMode="WordWrap"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+
+                            <!-- Recenzija 3 -->
+                            <Frame BackgroundColor="WHITE"
+                   CornerRadius="20"
+                   WidthRequest="300"
+                   Padding="10"
+                   HasShadow="True" BorderColor="#F4B400">
+                                <Grid ColumnDefinitions="60, *" RowDefinitions="Auto">
+                                    <Image Source="amina.png"
+                           HeightRequest="50"
+                           WidthRequest="50"
+                           Aspect="AspectFill"
+                           HorizontalOptions="Center"
+                           VerticalOptions="Center"
+                           Clip="EllipseGeometry, Center=25,25, RadiusX=25, RadiusY=25"
+                           Grid.Column="0"/>
+                                    <StackLayout Grid.Column="1" Spacing="4">
+                                        <Label Text="Sara L." FontAttributes="Bold" FontSize="14" TextColor="#F4B400"/>
+                                        <Label Text="Prezadovoljna narudžbom, preporučujem!" FontSize="12" TextColor="Gray" LineBreakMode="WordWrap"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+
+                        </StackLayout>
+                    </ScrollView>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+
+    </Grid>
 </ContentPage>
