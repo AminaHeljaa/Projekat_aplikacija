@@ -16,7 +16,7 @@ namespace Projekatv2.Services
 
         public Service()
         {
-            AddUser(new User { Id = 1, FullName = "Hana Karzic", Email = "hanakarzic@size.ba", Password = "12345678",ProfileImage="profil.png" });
+            AddUser(new User { Id = 1, FullName = "Hana Karzic", Email = "hanakarzic@size.ba", Password = "12345678",ProfileImage="hana.png" });
             AddUser(new User { Id = 2, FullName = "Amina Helja", Email = "aminahelja@size.ba", Password = "87654321",ProfileImage="amina.png" });
         }
 
@@ -36,6 +36,16 @@ namespace Projekatv2.Services
         public User GetUserById(int id)
         {
             return Users.Values.FirstOrDefault(u => u.Id == id);
+        }
+
+        public void UpdateUserName(int id, string newName)
+        {
+           
+            var user = Users.Values.FirstOrDefault(u => u.Id == id);
+            if (user != null)
+            {
+                user.FullName = newName;
+            }
         }
     }
 }

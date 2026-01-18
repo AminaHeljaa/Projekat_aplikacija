@@ -36,8 +36,21 @@ public partial class ProfilePage : ContentPage
     {
         
         Preferences.Remove("userId");
-
-        
         Application.Current.MainPage = new NavigationPage(new LoginPage());
+    }
+
+    private async void EditProfile_Tapped(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new EditProfilePage());
+    }
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        LoadUser();   // ponovo u?ita podatke kad se vratiš sa EditProfile
+    }
+
+    private async void TapHelp_Tapped(object sender, TappedEventArgs e)
+    {
+        await Navigation.PushAsync(new HelpPage());
     }
 }

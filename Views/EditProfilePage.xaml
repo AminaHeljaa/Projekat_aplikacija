@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Projekatv2.Views.EditProfilePage"
+             Title="Uredi Profil"
+             BackgroundImageSource="pocetna.png">
+
+    <ScrollView>
+        <VerticalStackLayout Spacing="20" Padding="20">
+
+
+
+            <!-- Lični podaci -->
+            <Frame CornerRadius="24" Padding="20" BackgroundColor="White" HasShadow="True" >
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="Licni podaci" FontSize="18" FontAttributes="Bold" TextColor="#1F3C88" />
+
+
+                    <Entry x:Name="NameEntry" Placeholder="Ime" />
+                    <Entry Placeholder="Korisnicko ime" />
+                    <Entry Placeholder="Email adresa" Keyboard="Email" />
+                    <Entry Placeholder="Broj telefona" Keyboard="Telephone" />
+                    <DatePicker />
+                    <Entry Placeholder="Grad" />
+                    <Entry Placeholder="Drzava" />
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Sigurnost -->
+            <Frame CornerRadius="24" Padding="20" BackgroundColor="White" HasShadow="True">
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="Sigurnost" FontSize="18" FontAttributes="Bold" TextColor="#1F3C88" />
+
+
+                    <Entry Placeholder="Trenutna lozinka" IsPassword="True" />
+                    <Entry Placeholder="Nova lozinka" IsPassword="True" />
+                    <Entry Placeholder="Potvrdi novu lozinku" IsPassword="True" />
+                </VerticalStackLayout>
+            </Frame>
+
+
+            <!-- Notifikacije -->
+            <Frame CornerRadius="24" Padding="20" BackgroundColor="White" HasShadow="True">
+                <VerticalStackLayout Spacing="14">
+                    <Label Text="Notifikacije" FontSize="18" FontAttributes="Bold" TextColor="#1F3C88" />
+
+
+                    <HorizontalStackLayout>
+                        <Label Text="Email notifikacije" VerticalOptions="Center" />
+                        <Switch HorizontalOptions="EndAndExpand" />
+                    </HorizontalStackLayout>
+
+
+                    <HorizontalStackLayout>
+                        <Label Text="Push notifikacije" VerticalOptions="Center" />
+                        <Switch HorizontalOptions="EndAndExpand" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+            </Frame>
+
+
+
+            <!-- Dugmad -->
+            <VerticalStackLayout Spacing="12">
+                <Button Text="Sacuvaj promjene" x:Name="SaveButton"  Clicked="SaveButton_Clicked" BackgroundColor="#FFC107" TextColor="Black" CornerRadius="20" HeightRequest="50" />
+                <Button Text="Odustani" BackgroundColor="#E0E0E0" TextColor="Black" CornerRadius="20" HeightRequest="50" />
+            </VerticalStackLayout>
+
+
+        </VerticalStackLayout>
+    </ScrollView>
+   
+
+    
+</ContentPage>

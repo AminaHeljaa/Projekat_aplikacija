@@ -11,5 +11,7 @@ namespace Projekatv2.Services
     {
         Task<bool> TryLogin(string email, string password);
         User GetUserById(int id);
+        void UpdateUserName(int id, string newName);
+
     }
 }

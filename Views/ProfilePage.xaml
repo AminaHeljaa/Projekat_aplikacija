@@ -46,7 +46,11 @@
                 <Image Source="editprofile.png" HeightRequest="30" Margin="10"/>
                 <Label Text="Uredi Profil" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center" TextColor="Black"/>
                 <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
-                       Margin="0,3,10,0"/>
+                       Margin="0,3,10,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="EditProfile_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
         </Frame>
 
@@ -82,7 +86,11 @@
                 <Image Source="helpcenter.png" HeightRequest="30" Margin="10"/>
                 <Label Text="Pomoc" FontSize="14" Margin="0,3,0,0" FontFamily="Poppins" VerticalOptions="Center" TextColor="Black"/>
                 <Label Text=">" VerticalOptions="Center" FontFamily="Poppins" FontSize="20" HorizontalOptions="EndAndExpand"
-         Margin="0,3,10,0"/>
+         Margin="0,3,10,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="TapHelp_Tapped" />
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
         </Frame>
 
