@@ -103,6 +103,11 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.Maui.Controls.Maps" Version="6.0.101" />
 	</ItemGroup>
+	<ItemGroup>
+	  <MauiFont Update="Resources\Fonts\GreatVibes-Regular.ttf">
+	    <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+	  </MauiFont>
+	</ItemGroup>
 
 
 </Project>

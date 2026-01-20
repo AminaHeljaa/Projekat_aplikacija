@@ -8,17 +8,14 @@
     <VerticalStackLayout Padding="15" Spacing="15">
         
 
-            <!-- BACK BUTTON / IKONA -->
+           
             <HorizontalStackLayout VerticalOptions="Start" HorizontalOptions="Start" Spacing="10">
-                <Label Text="←"
-               FontSize="25"
-               TextColor="#1E3A8A"
-               VerticalOptions="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" NumberOfTapsRequired="1"/>
-                    </Label.GestureRecognizers>
-                </Label>
-            </HorizontalStackLayout>
+            <Image Source="arrow.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start"> 
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </HorizontalStackLayout>
 
         <Frame CornerRadius="25"
        BackgroundColor="White"
@@ -27,19 +24,13 @@
        HeightRequest="50">
             <Grid Padding="10" ColumnDefinitions="Auto, *" VerticalOptions="Center">
 
-                <!-- Ikona lijevo -->
-                <Image Source="search.png"
-               HeightRequest="25"
-               WidthRequest="25"
-               VerticalOptions="Center"
-               HorizontalOptions="Start"/>
+              
 
-                <!-- SearchBar -->
                 <SearchBar x:Name="SearchBar"
                    Placeholder="Pretraži palačinke, holandski..."
                    TextChanged="OnSearchTextChanged" 
                    BackgroundColor="Transparent"
-                   HorizontalOptions="FillAndExpand"
+                   HorizontalOptions="Center"
                    VerticalOptions="Center"
                    FontSize="14"
                    TextColor="Black"
@@ -49,7 +40,7 @@
         </Frame>
 
 
-        <!-- PRIKAZ PROIZVODA -->
+       
         <CollectionView x:Name="ProductsCollection"
                         ItemsLayout="VerticalList"
                         Margin="0"
@@ -67,7 +58,6 @@
                               RowDefinitions="Auto"
                               Padding="10">
 
-                            <!-- SLIKA SA GRADIENTOM -->
                             <Frame HeightRequest="80"
                                    WidthRequest="80"
                                    CornerRadius="15"
@@ -86,7 +76,7 @@
                                        WidthRequest="80"/>
                             </Frame>
 
-                            <!-- DETALJI PROIZVODA -->
+                          
                             <VerticalStackLayout Grid.Column="1" Padding="10,0" Spacing="4">
                                 <Label Text="{Binding Name}"
                                        FontAttributes="Bold"
@@ -102,7 +92,7 @@
                                        TextColor="#F4B400"/>
                             </VerticalStackLayout>
 
-                            <!-- NARUČI DUGME -->
+                          
                             <Button Text="Naruči"
                                     Grid.Column="2"
                                     VerticalOptions="Center"

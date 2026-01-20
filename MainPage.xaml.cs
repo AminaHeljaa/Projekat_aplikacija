@@ -9,6 +9,7 @@ namespace Projekatv2;
 public partial class MainPage : ContentPage
 {
     private Home Binding=> BindingContext as Home;
+    Button _selectedButton;
 
     public MainPage()
     {
@@ -18,7 +19,7 @@ public partial class MainPage : ContentPage
 
     private async void OnProductTapped(object sender, EventArgs e)
     {
-        // Dobij proizvod vezan za frame
+       
         if (sender is Frame frame && frame.BindingContext is Product tappedProduct)
         {
             await Navigation.PushAsync(new ProductDetailsPage(tappedProduct));
@@ -26,7 +27,7 @@ public partial class MainPage : ContentPage
     }
 
 
-    // Funkcija koja vraća sliku srca ovisno o statusu favorita
+  
     private string GetHeartImage(bool isFavorite)
     {
         return isFavorite ? "zutosrce.png" : "heart.png";
@@ -47,6 +48,21 @@ public partial class MainPage : ContentPage
         button.Source = GetHeartImage(product.IsFavorite);
 
     }
+    private void Category_Clicked(object sender, EventArgs e)
+    {
+        if (sender is not Button clickedButton)
+            return;
+
+      
+        if (_selectedButton != null)
+            _selectedButton.BackgroundColor = Colors.Transparent;
+
+    
+        clickedButton.BackgroundColor = Color.FromArgb("#F4B400");
+
+      
+        _selectedButton = clickedButton;
+    }
 
     private void Button_Clicked(object sender, EventArgs e)
     {
@@ -56,7 +72,7 @@ public partial class MainPage : ContentPage
 
         CartService.Instance.AddToCart(product);
 
-        // PREBACI NA CART TAB
+        
         Shell.Current.CurrentItem.CurrentItem =
             Shell.Current.CurrentItem.Items
             .First(tab => tab.Title == "Cart");

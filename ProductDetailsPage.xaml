@@ -6,25 +6,21 @@
     NavigationPage.HasNavigationBar="False"
     Shell.NavBarIsVisible="False">
 
-    <!-- Grid sa 2 reda: Header i scrollable content -->
+ 
     <Grid RowDefinitions="Auto,*">
 
-        <!-- BACK BUTTON -->
-        <Label
-            Text="←"
-            FontSize="24"
-            Margin="20,10"
-            TextColor="Black">
-            <Label.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnBackTapped"/>
-            </Label.GestureRecognizers>
-        </Label>
+        <StackLayout Margin="20,20,10,10">
+            <Image Source="arrow.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" VerticalOptions="Start" >
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnBackTapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </StackLayout>
 
-        <!-- Scrollable content -->
         <ScrollView Grid.Row="1" Margin="0,0,0,0">
             <StackLayout Spacing="20" Padding="16,0,16,16">
 
-                <!-- PROIZVOD -->
+           
                 <Frame
                     CornerRadius="30"
                     Padding="0"
@@ -35,7 +31,7 @@
                         Padding="0"
                         RowDefinitions="Auto,Auto,Auto,Auto,Auto">
 
-                        <!-- CIJENA -->
+                    
                         <Frame
                             BackgroundColor="#F4B400"
                             CornerRadius="40"
@@ -53,7 +49,7 @@
                                 FontSize="17"/>
                         </Frame>
 
-                        <!-- SLIKA -->
+                        
                         <Image
                             Grid.Row="0"
                             Source="{Binding Image}"
@@ -61,7 +57,7 @@
                             Aspect="Fill"
                             Margin="0,-40,0,0" />
 
-                        <!-- NAZIV -->
+                      
                         <Label
                             Grid.Row="1"
                             Text="{Binding Name}"
@@ -70,7 +66,7 @@
                             TextColor="#2C2C2C"
                             Margin="10,10,0,0"/>
 
-                        <!-- RATING -->
+                       
                         <StackLayout Margin="10"
                             Grid.Row="2"
                             Orientation="Horizontal"
@@ -80,7 +76,7 @@
                             <Label Text="{Binding Rating}" FontAttributes="Bold" TextColor="Black"/>
                         </StackLayout>
 
-                        <!-- OPIS -->
+                      
                         <Label
                             Grid.Row="3"
                             Text="{Binding Description}"
@@ -88,7 +84,7 @@
                             TextColor="Gray"
                             Margin="10,8,10,10"/>
 
-                        <!-- NARUČI -->
+                       
                         <Button
                             Grid.Row="4"
                             Text="Naruči sada"
@@ -101,22 +97,22 @@
                 </Frame>
 
 
-                <!-- REZENZIJE -->
+              
                 <StackLayout>
                     <Label Text="Recenzije korisnika" FontAttributes="Bold" FontSize="17" Margin="5,0,0,10" TextColor="Black"/>
 
                     <ScrollView Orientation="Horizontal" HorizontalScrollBarVisibility="Never">
                         <StackLayout Orientation="Horizontal" Spacing="12">
 
-                            <!-- Recenzija 1 -->
+                           
                             <Frame BackgroundColor="white"
                    CornerRadius="20"
                    WidthRequest="300"
                    Padding="10"
                    HasShadow="True" BorderColor="#F4B400" >
                                 <Grid ColumnDefinitions="60, *" RowDefinitions="Auto">
-                                    <!-- SLIKA KORISNIKA -->
-                                    <Image Source="amina.png"
+                                  
+                                    <Image Source="marevac.jpg"
                            HeightRequest="50"
                            WidthRequest="50"
                            Aspect="AspectFill"
@@ -125,23 +121,23 @@
                           
                            Grid.Column="0"/>
 
-                                    <!-- KOMENTAR I IME -->
+                                 
                                     <StackLayout Grid.Column="1" Spacing="4">
-                                        <Label Text="Amina H." FontAttributes="Bold" FontSize="14" TextColor="#F4B400"/>
-                                        <Label Text="Odličan proizvod! Vrlo brzo stiglo." FontSize="12" TextColor="Gray" LineBreakMode="WordWrap"/>
+                                        <Label Text="Elmin M." FontAttributes="Bold" FontSize="14" TextColor="#F4B400"/>
+                                        <Label Text="Najviše volim jafu, ali i ovaj može proći uz kafu. Projekat za 10!" FontSize="12" TextColor="Gray" LineBreakMode="WordWrap"/>
                                        
                                     </StackLayout>
                                 </Grid>
                             </Frame>
 
-                            <!-- Recenzija 2 -->
+                           
                             <Frame BackgroundColor="White"
                    CornerRadius="20"
                    WidthRequest="300"
                    Padding="10"
                    HasShadow="True" BorderColor="#F4B400">
                                 <Grid ColumnDefinitions="60, *" RowDefinitions="Auto">
-                                    <Image Source="amina.png"
+                                    <Image Source="buza.jpg"
                            HeightRequest="50"
                            WidthRequest="50"
                            Aspect="AspectFill"
@@ -150,8 +146,8 @@
                            Clip="EllipseGeometry, Center=25,25, RadiusX=25, RadiusY=25"
                            Grid.Column="0"/>
                                     <StackLayout Grid.Column="1" Spacing="4">
-                                        <Label Text="Miran K." FontAttributes="Bold" FontSize="14" TextColor="#F4B400"/>
-                                        <Label Text="Super pakovanje i kvalitet parfema." FontSize="12" TextColor="Gray" LineBreakMode="WordWrap"/>
+                                        <Label Text="Nevzurdin B." FontAttributes="Bold" FontSize="14" TextColor="#F4B400"/>
+                                        <Label Text="Sa stajališta mog segmenta ovo je i više nego predobro." FontSize="12" TextColor="Gray" LineBreakMode="WordWrap"/>
                                     </StackLayout>
                                 </Grid>
                             </Frame>
@@ -163,7 +159,7 @@
                    Padding="10"
                    HasShadow="True" BorderColor="#F4B400">
                                 <Grid ColumnDefinitions="60, *" RowDefinitions="Auto">
-                                    <Image Source="amina.png"
+                                    <Image Source="bega.jpg"
                            HeightRequest="50"
                            WidthRequest="50"
                            Aspect="AspectFill"
@@ -172,8 +168,8 @@
                            Clip="EllipseGeometry, Center=25,25, RadiusX=25, RadiusY=25"
                            Grid.Column="0"/>
                                     <StackLayout Grid.Column="1" Spacing="4">
-                                        <Label Text="Sara L." FontAttributes="Bold" FontSize="14" TextColor="#F4B400"/>
-                                        <Label Text="Prezadovoljna narudžbom, preporučujem!" FontSize="12" TextColor="Gray" LineBreakMode="WordWrap"/>
+                                        <Label Text="Alen B." FontAttributes="Bold" FontSize="14" TextColor="#F4B400"/>
+                                        <Label Text="Misilio sam da sam poslao narudzbu. Možete provjeriti?" FontSize="12" TextColor="Gray" LineBreakMode="WordWrap"/>
                                     </StackLayout>
                                 </Grid>
                             </Frame>

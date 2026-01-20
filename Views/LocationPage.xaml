@@ -7,10 +7,10 @@
              Shell.NavBarIsVisible="False" BackgroundColor="White">
 
     <StackLayout Margin="0,10">
-        <!-- HEADER: Hamburger | Logo + Naziv | Pretraga -->
+      
         <Grid Padding="5" ColumnDefinitions="Auto,*,Auto" VerticalOptions="Start" HorizontalOptions="Fill">
 
-            <!-- Hamburger ikona -->
+         
             <ImageButton Source="hamburger.png"
                   WidthRequest="30"
                   HeightRequest="30"
@@ -20,7 +20,7 @@
                   HorizontalOptions="Start"
                   VerticalOptions="Center"/>
 
-            <!-- Logo i naziv -->
+         
             <HorizontalStackLayout Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
                 <Image Source="logo.png" HeightRequest="60" WidthRequest="60"/>
                 <Label Text="Slatki zalogaj"

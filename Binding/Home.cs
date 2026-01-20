@@ -87,7 +87,7 @@ namespace Projekatv2.Binding
 
             FilteredProducts = new ObservableCollection<Product>(Products);
 
-            // FAVORITI (horizontalni skrol)
+            
             FavoriteProducts = new ObservableCollection<Product>
             {
                new Product { Name="Pistacija Palačinak", Description="Sočna palačinka prekrivena kremastom pistacija pastom i posuta hrskavim komadićima pistacija. Savršen balans između blagih orašastih nota i slatkog okusa, idealno za sve ljubitelje pistacija.", Price=2.5, Image="pistacija.jpg", Category="Palacinci", Rating=4.6 },
@@ -96,7 +96,6 @@ namespace Projekatv2.Binding
                 new Product { Name="Jafa Palačinak", Image="jafa.png", Price=3 }
             };
 
-            // SLIDER SLIKE
             FeaturedImages = new ObservableCollection<string>
             {
                 "palacinak2.jpg",
@@ -104,7 +103,7 @@ namespace Projekatv2.Binding
                 "logo2.png"
             };
 
-            // ❤️ FAVORITE
+           
             ToggleFavoriteCommand = new Command<Product>(product =>
             {
                 if (product == null) return;
@@ -123,7 +122,7 @@ namespace Projekatv2.Binding
                 }
             });
 
-            // 🛒 DODAJ U KORPU (PREKO CartService)
+          
             AddToCartCommand = new Command<Product>(product =>
             {
                 if (product == null) return;
@@ -139,7 +138,7 @@ namespace Projekatv2.Binding
             });
 
 
-            // 📂 FILTER PO KATEGORIJI
+           
             SelectCategoryCommand = new Command<string>(category =>
             {
                 SelectedCategory = category;

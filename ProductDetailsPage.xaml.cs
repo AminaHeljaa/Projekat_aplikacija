@@ -34,7 +34,7 @@ namespace Projekatv2.Views
 
         private async void OnBackTapped(object sender, EventArgs e)
         {
-            await Shell.Current.GoToAsync("//home"); // "//" ide direktno na root rutu
+            await Shell.Current.GoToAsync("//home");
         }
     }
     }

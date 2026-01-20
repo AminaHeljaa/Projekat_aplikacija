@@ -14,7 +14,7 @@ namespace Projekatv2.Services
 
         private CartService() { }
 
-        // ➕ DODAJ U KORPU
+
         public void AddToCart(Product product)
         {
             var existing = Cart.FirstOrDefault(x => x.Name == product.Name);
@@ -29,7 +29,7 @@ namespace Projekatv2.Services
                 {
                     Name = product.Name,
                     Category = product.Category,
-                    Price = (decimal)product.Price, // 🔥 OVO RJEŠAVA GREŠKU
+                    Price = (decimal)product.Price, 
                     Image = product.Image,
                     Quantity = 1
                 });
@@ -37,7 +37,7 @@ namespace Projekatv2.Services
             }
         }
 
-        // ➕ POVEĆAJ KOLIČINU
+       
         public void Increase(CartItem item)
         {
             if (item == null) return;

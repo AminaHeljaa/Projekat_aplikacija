@@ -12,9 +12,10 @@ namespace Projekatv2.Binding
             string buttonCategory = parameter as string;
 
             if (selectedCategory == buttonCategory)
-                return Color.FromArgb("#F4B400");
+                return new SolidColorBrush(Color.FromArgb("#F4B400"));
             else
-                return Colors.Transparent;
+                return Brush.Transparent;
+
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -7,51 +7,50 @@
     Shell.NavBarIsVisible="False">
 
     <Grid>
-        <!-- POZADINA -->
-        <Image Source="photo12.png"
+      
+        <Image Source="lapa.png"
                Aspect="AspectFill"
-               Scale="1.8"
+               Scale="1.2"
                TranslationX="0"
                TranslationY="0" />
-        <!-- BACK LABEL / TAP GESTURE -->
-        <Label Text="←" FontSize="25" TextColor="#1F3A5F" 
-               Margin="16,20,0,0" HorizontalOptions="Start" VerticalOptions="Start">
-            <Label.GestureRecognizers>
+        <StackLayout Margin="20,20,10,10">
+        <Image Source="arrow.png" HeightRequest="20" WidthRequest="20" HorizontalOptions="Start" VerticalOptions="Start" >
+            <Image.GestureRecognizers>
                 <TapGestureRecognizer Tapped="OnBackToCart"/>
-            </Label.GestureRecognizers>
-        </Label>
-
+            </Image.GestureRecognizers>
+        </Image>
+</StackLayout>
         <ScrollView Margin="0,70,0,0">
             <StackLayout Padding="16" Spacing="19">
 
-                <!-- NASLOV -->
-                <Label Text="Izvrši narudžbu" FontSize="25" FontAttributes="Bold"
+             
+                <Label Text="Izvrši narudžbu" FontSize="35" FontAttributes="Bold" FontFamily="GreatVibes"
                        TextColor="#1F3A5F" HorizontalOptions="Center" Margin="0,0,0,10"/>
 
-                <!-- FRAME ZA DOSTAVU -->
+              
                 <Frame CornerRadius="20" BackgroundColor="#FFFFFF" HasShadow="True">
                     <StackLayout Padding="16" Spacing="12">
                         <Label Text="Podaci za dostavu" FontSize="18" FontAttributes="Bold" TextColor="#2C2C2C"/>
 
-                        <!-- Ime -->
+                     
                         <Label Text="Ime" FontSize="14" TextColor="Black"/>
                         <Frame CornerRadius="15" BackgroundColor="#F7F7F7" Padding="10">
                             <Entry x:Name="FirstNameEntry" Placeholder="Unesite ime" Keyboard="Text" MaxLength="30" TextColor="Black"/>
                         </Frame>
 
-                        <!-- Prezime -->
+                     
                         <Label Text="Prezime" FontSize="14" TextColor="Black"/>
                         <Frame CornerRadius="15" BackgroundColor="#F7F7F7" Padding="10">
                             <Entry x:Name="LastNameEntry" Placeholder="Unesite prezime" Keyboard="Text" MaxLength="30" TextColor="Black"/>
                         </Frame>
 
-                        <!-- Broj telefona -->
+                      
                         <Label Text="Broj telefona" FontSize="14" TextColor="Black"/>
                         <Frame CornerRadius="15" BackgroundColor="#F7F7F7" Padding="10">
                             <Entry x:Name="PhoneEntry" Placeholder="Unesite broj telefona" Keyboard="Telephone" MaxLength="15" TextColor="Black"/>
                         </Frame>
 
-                        <!-- Adresa -->
+                     
                         <Label Text="Adresa" FontSize="14" TextColor="Black"/>
                         <Frame CornerRadius="15" BackgroundColor="#F7F7F7" Padding="10">
                             <Editor x:Name="AddressEntry" Placeholder="Unesite adresu" AutoSize="TextChanges" HeightRequest="80" MaxLength="100" TextColor="Black"/>
@@ -59,35 +58,35 @@
                     </StackLayout>
                 </Frame>
 
-                <!-- FRAME ZA PLAĆANJE -->
+            
                 <Frame CornerRadius="20" BackgroundColor="#FFFFFF" HasShadow="True">
                     <StackLayout Padding="16" Spacing="12">
                         <Label Text="Podaci za plaćanje" FontSize="18" FontAttributes="Bold" TextColor="#2C2C2C"/>
 
-                        <!-- Broj kartice -->
+                       
                         <Label Text="Broj kartice" FontSize="14" TextColor="Black"/>
                         <Frame CornerRadius="15" BackgroundColor="#F7F7F7" Padding="10">
                             <Entry x:Name="CardNumberEntry" Placeholder="Unesite broj kartice" Keyboard="Numeric" MaxLength="16" TextColor="Black"/>
                         </Frame>
 
-                        <!-- Ime na kartici -->
+                       
                         <Label Text="Ime na kartici" FontSize="14" TextColor="Black"/>
                         <Frame CornerRadius="15" BackgroundColor="#F7F7F7" Padding="10">
                             <Entry x:Name="CardNameEntry" Placeholder="Unesite ime na kartici" Keyboard="Text" MaxLength="30" TextColor="Black"/>
                         </Frame>
 
-                        <!-- Datum isteka i CVV -->
+                        
                         <Label Text="Datum isteka i CVV" FontSize="14" TextColor="Black"/>
                         <HorizontalStackLayout Spacing="10">
 
-                            <!-- DatePicker za MM/YY -->
+                         
                             <Frame CornerRadius="15" BackgroundColor="#F7F7F7" Padding="10" HorizontalOptions="FillAndExpand">
                                 <DatePicker x:Name="ExpiryPicker"
                                             MinimumDate="{x:Static sys:DateTime.Now}"
                                             Format="MM/yy" TextColor="Gray"/>
                             </Frame>
 
-                            <!-- CVV -->
+                          
                             <Frame CornerRadius="15" BackgroundColor="#F7F7F7" Padding="10" WidthRequest="80">
                                 <Entry x:Name="CVVEntry" Placeholder="CVV" Keyboard="Numeric" MaxLength="3" IsPassword="True" TextColor="Black"/>
                             </Frame>
@@ -95,7 +94,7 @@
                     </StackLayout>
                 </Frame>
 
-                <!-- DUGME -->
+              
                 <Button Text="Potvrdi narudžbu" BackgroundColor="#F4B400" TextColor="White"
                         CornerRadius="25" HeightRequest="55" FontAttributes="Bold"
                         Clicked="OnConfirmOrderClicked"/>

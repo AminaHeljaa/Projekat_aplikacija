@@ -16,10 +16,9 @@ public partial class CartPage : ContentPage
     {
         InitializeComponent();
         Shell.SetNavBarIsVisible(this, false);
-        // Postavi BindingContext
         BindingContext = new Korpa();
 
-        // Provjeri da li je korpa prazna
+      
         UpdateEmptyState();
 
         // Automatski update kada se promijeni korpa
@@ -33,7 +32,7 @@ public partial class CartPage : ContentPage
         EmptyCart.IsVisible = isEmpty;
     }
 
-    // Dugme "Naruèi još" ? vraæa na HomePage
+    
     private void OnBackToHome(object sender, EventArgs e)
     {
         Shell.Current.CurrentItem.CurrentItem =
@@ -49,6 +48,6 @@ public partial class CartPage : ContentPage
 
 
 
-    // Dugme "Izvrši narudžbu"
+  
 
 }
